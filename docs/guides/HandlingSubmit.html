@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="en" >
     <head>
-        <title>4.4. asReset · Controlled Forms for React and Redux</title>
+        <title>3.6. Handling Submit · Controlled Forms for React and Redux</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="withData.html" />
+    <link rel="next" href="../API.html" />
     
     
-    <link rel="prev" href="asSubmit.html" />
+    <link rel="prev" href="ValidationErrors.html" />
     
 
     </head>
@@ -210,9 +210,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../guides/StoreSetup.html">
+        <li class="chapter " data-level="1.4.1" data-path="StoreSetup.html">
             
-                <a href="../guides/StoreSetup.html">
+                <a href="StoreSetup.html">
             
                     
                     3.1. Store Setup
@@ -223,9 +223,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../guides/FormInitialization.html">
+        <li class="chapter " data-level="1.4.2" data-path="FormInitialization.html">
             
-                <a href="../guides/FormInitialization.html">
+                <a href="FormInitialization.html">
             
                     
                     3.2. Form Initialization
@@ -236,9 +236,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="../guides/UpdatingFields.html">
+        <li class="chapter " data-level="1.4.3" data-path="UpdatingFields.html">
             
-                <a href="../guides/UpdatingFields.html">
+                <a href="UpdatingFields.html">
             
                     
                     3.3. Updating Fields
@@ -249,9 +249,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="../guides/FormValidation.html">
+        <li class="chapter " data-level="1.4.4" data-path="FormValidation.html">
             
-                <a href="../guides/FormValidation.html">
+                <a href="FormValidation.html">
             
                     
                     3.4. Form Validation
@@ -262,9 +262,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.5" data-path="../guides/ValidationErrors.html">
+        <li class="chapter " data-level="1.4.5" data-path="ValidationErrors.html">
             
-                <a href="../guides/ValidationErrors.html">
+                <a href="ValidationErrors.html">
             
                     
                     3.5. Validation Error
@@ -275,9 +275,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.6" data-path="../guides/HandlingSubmit.html">
+        <li class="chapter active" data-level="1.4.6" data-path="HandlingSubmit.html">
             
-                <a href="../guides/HandlingSubmit.html">
+                <a href="HandlingSubmit.html">
             
                     
                     3.6. Handling Submit
@@ -307,9 +307,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="Form.html">
+        <li class="chapter " data-level="1.5.1" data-path="../api/Form.html">
             
-                <a href="Form.html">
+                <a href="../api/Form.html">
             
                     
                     4.1. Form
@@ -320,9 +320,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="asField.html">
+        <li class="chapter " data-level="1.5.2" data-path="../api/asField.html">
             
-                <a href="asField.html">
+                <a href="../api/asField.html">
             
                     
                     4.2. asField
@@ -333,9 +333,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="asSubmit.html">
+        <li class="chapter " data-level="1.5.3" data-path="../api/asSubmit.html">
             
-                <a href="asSubmit.html">
+                <a href="../api/asSubmit.html">
             
                     
                     4.3. asSubmit
@@ -346,9 +346,9 @@
             
         </li>
     
-        <li class="chapter active" data-level="1.5.4" data-path="asReset.html">
+        <li class="chapter " data-level="1.5.4" data-path="../api/asReset.html">
             
-                <a href="asReset.html">
+                <a href="../api/asReset.html">
             
                     
                     4.4. asReset
@@ -359,9 +359,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="withData.html">
+        <li class="chapter " data-level="1.5.5" data-path="../api/withData.html">
             
-                <a href="withData.html">
+                <a href="../api/withData.html">
             
                     
                     4.5. withData
@@ -407,7 +407,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >4.4. asReset</a>
+        <a href="../.." >3.6. Handling Submit</a>
     </h1>
 </div>
 
@@ -422,44 +422,28 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="asresetcomponent"><code>asReset(component)</code></h1>
-<p>It is used to enhance any React component with the ability to reset the wrapping form.</p>
-<h2 id="arguments">Arguments</h2>
-<ol>
-<li><code>component</code> (<em>ReactComponent</em>): A React component that gets enhanced.</li>
-</ol>
-<h4 id="props">Props</h4>
-<p>The <code>component</code> receives a set of props that are passed down by the HoC.</p>
-<table>
-<thead>
-<tr>
-<th>Prop</th>
-<th>Type</th>
-<th>Description</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>resetForm</td>
-<td>(<em>Function</em>)</td>
-<td>Resets the wrapping form.</td>
-</tr>
-</tbody>
-</table>
-<h2 id="returns">Returns</h2>
-<p>(<em>ReactComponent</em>) Enhanced React component</p>
+                                <h1 id="handling-submit">Handling Submit</h1>
+<p>Once our form has been filled out completely, we most likely want to perform some data processing as soon as it gets submitted. A common use case is to send the data to a backend which then e.g. creates an account from the provided user data.</p>
+<p>We can do that within the <a href="../api/Form.html#props"><code>onSubmit</code></a>-callback passed to our wrapping <a href="../api/Form.html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Form</span><span class="token punctuation">&gt;</span></span></code></a> component.</p>
 <h2 id="example">Example</h2>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> asReset <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-controlled-form&apos;</span>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Form <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-controlled-form&apos;</span>
 
-<span class="token keyword">function</span> <span class="token function">ResetButton</span><span class="token punctuation">(</span><span class="token punctuation">{</span> resetForm <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">return</span> <span class="token operator">&lt;</span>button onClick<span class="token operator">=</span><span class="token punctuation">{</span>resetForm<span class="token punctuation">}</span><span class="token operator">&gt;</span>Reset<span class="token operator">&lt;</span><span class="token operator">/</span>button<span class="token operator">&gt;</span>
+<span class="token keyword">function</span> <span class="token function">onSubmit</span><span class="token punctuation">(</span><span class="token punctuation">{</span> data <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token function">fetch</span><span class="token punctuation">(</span><span class="token string">&apos;https://api.mybackend.com/user/&apos;</span><span class="token punctuation">,</span> <span class="token punctuation">{</span>
+    body<span class="token punctuation">:</span> JSON<span class="token punctuation">.</span><span class="token function">stringify</span><span class="token punctuation">(</span>data<span class="token punctuation">)</span><span class="token punctuation">,</span>
+    method<span class="token punctuation">:</span> <span class="token string">&apos;POST&apos;</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token function">then</span><span class="token punctuation">(</span>res <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// do something if the server responds positively</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">.</span><span class="token keyword">catch</span><span class="token punctuation">(</span>err <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+    <span class="token comment" spellcheck="true">// do something if sending data went wrong</span>
+  <span class="token punctuation">}</span><span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">const</span> Reset <span class="token operator">=</span> <span class="token function">asReset</span><span class="token punctuation">(</span>ResetButton<span class="token punctuation">)</span>
-
-<span class="token comment" spellcheck="true">// usage</span>
-<span class="token operator">&lt;</span>Reset <span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>Form formId<span class="token operator">=</span><span class="token string">&apos;user&apos;</span> onSubmit<span class="token operator">=</span><span class="token punctuation">{</span>onSubmit<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+   <span class="token comment" spellcheck="true">/* form fields */</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token operator">&gt;</span>
+<span class="token punctuation">)</span>
 </code></pre>
 
                                 
@@ -488,12 +472,12 @@
 
             
                 
-                <a href="asSubmit.html" class="navigation navigation-prev " aria-label="Previous page: 4.3. asSubmit">
+                <a href="ValidationErrors.html" class="navigation navigation-prev " aria-label="Previous page: 3.5. Validation Error">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="withData.html" class="navigation navigation-next " aria-label="Next page: 4.5. withData">
+                <a href="../API.html" class="navigation navigation-next " aria-label="Next page: 4. API Reference">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -504,7 +488,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.4. asReset","level":"1.5.4","depth":2,"next":{"title":"4.5. withData","level":"1.5.5","depth":2,"path":"docs/api/withData.md","ref":"docs/api/withData.md","articles":[]},"previous":{"title":"4.3. asSubmit","level":"1.5.3","depth":2,"path":"docs/api/asSubmit.md","ref":"docs/api/asSubmit.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/api/asReset.md","mtime":"2017-06-10T09:24:08.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-11T19:52:30.556Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"3.6. Handling Submit","level":"1.4.6","depth":2,"next":{"title":"4. API Reference","level":"1.5","depth":1,"path":"docs/API.md","ref":"docs/API.md","articles":[{"title":"4.1. Form","level":"1.5.1","depth":2,"path":"docs/api/Form.md","ref":"docs/api/Form.md","articles":[]},{"title":"4.2. asField","level":"1.5.2","depth":2,"path":"docs/api/asField.md","ref":"docs/api/asField.md","articles":[]},{"title":"4.3. asSubmit","level":"1.5.3","depth":2,"path":"docs/api/asSubmit.md","ref":"docs/api/asSubmit.md","articles":[]},{"title":"4.4. asReset","level":"1.5.4","depth":2,"path":"docs/api/asReset.md","ref":"docs/api/asReset.md","articles":[]},{"title":"4.5. withData","level":"1.5.5","depth":2,"path":"docs/api/withData.md","ref":"docs/api/withData.md","articles":[]}]},"previous":{"title":"3.5. Validation Error","level":"1.4.5","depth":2,"path":"docs/guides/ValidationErrors.md","ref":"docs/guides/ValidationErrors.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/guides/HandlingSubmit.md","mtime":"2017-06-11T16:40:03.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-11T19:52:30.556Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
