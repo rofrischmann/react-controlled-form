@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="en" >
     <head>
-        <title>1.1. Motivation · Controlled Forms for React and Redux</title>
+        <title>3.7. Using Form State · Controlled Forms for React and Redux</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Examples.html" />
+    <link rel="next" href="Composition.html" />
     
     
-    <link rel="prev" href="../Introduction.html" />
+    <link rel="prev" href="HandlingSubmit.html" />
     
 
     </head>
@@ -120,9 +120,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="Motivation.html">
+        <li class="chapter " data-level="1.2.1" data-path="../introduction/Motivation.html">
             
-                <a href="Motivation.html">
+                <a href="../introduction/Motivation.html">
             
                     
                     1.1. Motivation
@@ -133,9 +133,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="Examples.html">
+        <li class="chapter " data-level="1.2.2" data-path="../introduction/Examples.html">
             
-                <a href="Examples.html">
+                <a href="../introduction/Examples.html">
             
                     
                     1.2. Examples
@@ -223,9 +223,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.4.1" data-path="../guides/StoreSetup.html">
+        <li class="chapter " data-level="1.4.1" data-path="StoreSetup.html">
             
-                <a href="../guides/StoreSetup.html">
+                <a href="StoreSetup.html">
             
                     
                     3.1. Store Setup
@@ -236,9 +236,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.2" data-path="../guides/FormInitialization.html">
+        <li class="chapter " data-level="1.4.2" data-path="FormInitialization.html">
             
-                <a href="../guides/FormInitialization.html">
+                <a href="FormInitialization.html">
             
                     
                     3.2. Form Initialization
@@ -249,9 +249,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.3" data-path="../guides/UpdatingFields.html">
+        <li class="chapter " data-level="1.4.3" data-path="UpdatingFields.html">
             
-                <a href="../guides/UpdatingFields.html">
+                <a href="UpdatingFields.html">
             
                     
                     3.3. Updating Fields
@@ -262,9 +262,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.4" data-path="../guides/FormValidation.html">
+        <li class="chapter " data-level="1.4.4" data-path="FormValidation.html">
             
-                <a href="../guides/FormValidation.html">
+                <a href="FormValidation.html">
             
                     
                     3.4. Form Validation
@@ -275,9 +275,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.5" data-path="../guides/ValidationErrors.html">
+        <li class="chapter " data-level="1.4.5" data-path="ValidationErrors.html">
             
-                <a href="../guides/ValidationErrors.html">
+                <a href="ValidationErrors.html">
             
                     
                     3.5. Validation Error
@@ -288,9 +288,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.6" data-path="../guides/HandlingSubmit.html">
+        <li class="chapter " data-level="1.4.6" data-path="HandlingSubmit.html">
             
-                <a href="../guides/HandlingSubmit.html">
+                <a href="HandlingSubmit.html">
             
                     
                     3.6. Handling Submit
@@ -301,9 +301,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.7" data-path="../guides/UsingFormState.html">
+        <li class="chapter active" data-level="1.4.7" data-path="UsingFormState.html">
             
-                <a href="../guides/UsingFormState.html">
+                <a href="UsingFormState.html">
             
                     
                     3.7. Using Form State
@@ -314,9 +314,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.8" data-path="../guides/Composition.html">
+        <li class="chapter " data-level="1.4.8" data-path="Composition.html">
             
-                <a href="../guides/Composition.html">
+                <a href="Composition.html">
             
                     
                     3.8. Composition
@@ -446,7 +446,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >1.1. Motivation</a>
+        <a href="../.." >3.7. Using Form State</a>
     </h1>
 </div>
 
@@ -461,13 +461,50 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="motivation">Motivation</h1>
-<p>You might now think <em>&quot;Oh come one, yet even another form library form React/Redux?&quot;</em> and we totally understand that, but just think about why there are so many solutions in the first place; because form management is not at all a simple task. It might seem trivial to hack together some forms, but it is pretty hard to solve it for everyone without complex APIs, because there are simply tons of different use cases to be considered.</p>
-<p>Now you might say <em>&quot;Ok, and how will this one solve, what none other is able to?&quot;</em>.<br>
-Don&apos;t get us wrong, we really love and appreciate the work done with <a href="https://github.com/erikras/redux-form" _target="blank">redux-form</a>, <a href="https://github.com/davidkpiano/react-redux-form" _target="blank">react-redux-form</a> and all the other great solutions. But, we think the problem is wrong abstraction: Most solutions ship opinionated, declarative React components that abstract all the complex tasks away. They have tons of different props which accept thousands of combinations to satisfy most of the daily use cases.
-You might have already spot the issue. Trying to satisfy everyone is simply impossible.</p>
-<p><strong>Instead of shipping predefined components with lots of built-in features, we instead give you the right abstractions to create your very own forms.</strong></p>
-<p>The only built-in React component is the wrapping <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span></code> element itself. Apart from that, we give provide useful functional HOCs (<a href="Higher%20order%20components">Higher-Order Components</a>) which help you to create all your form components right away.</p>
+                                <h1 id="using-form-state">Using Form State</h1>
+<p>As explained before, <a href="../basics/State.html">form state</a> can be used to set a global state for each form instance.
+This comes in very handy for complex forms with several different validation states and proper displaying logic. In general, you might try to avoid form state until it becomes indispensable. This most often happens as soon as you have cross-field dependencies.</p>
+<p>For example, we might want to validate multiple fields at a time and set different keys for each validation case.</p>
+<h2 id="example">Example</h2>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Form <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-controlled-form&apos;</span>
+
+<span class="token keyword">function</span> <span class="token function">onChange</span><span class="token punctuation">(</span><span class="token punctuation">{</span> updateState<span class="token punctuation">,</span> state<span class="token punctuation">,</span> data <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span>phone<span class="token punctuation">.</span>value<span class="token punctuation">.</span><span class="token function">substr</span><span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">3</span><span class="token punctuation">)</span> <span class="token operator">===</span> <span class="token string">&apos;+33&apos;</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">updateState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      phoneCountry<span class="token punctuation">:</span> <span class="token string">&apos;France&apos;</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>data<span class="token punctuation">.</span>country<span class="token punctuation">.</span>value <span class="token operator">!==</span> state<span class="token punctuation">.</span>phoneType<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token function">updateState</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
+      invalidPhoneCountryCombination<span class="token punctuation">:</span> <span class="token boolean">true</span>
+    <span class="token punctuation">}</span><span class="token punctuation">)</span>
+  <span class="token punctuation">}</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span>
+  <span class="token operator">&lt;</span>Form formId<span class="token operator">=</span><span class="token string">&quot;complex&quot;</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span>onChange<span class="token punctuation">}</span><span class="token operator">&gt;</span>
+    <span class="token comment" spellcheck="true">/* form fields */</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>Form<span class="token operator">&gt;</span>
+<span class="token punctuation">)</span>
+</code></pre>
+<p>We can then use this information e.g. to display customized and dynamic warning messages.</p>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> withState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-controlled-form&apos;</span>
+
+<span class="token keyword">function</span> <span class="token function">Warning</span><span class="token punctuation">(</span><span class="token punctuation">{</span> invalidPhoneCountryCombination <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span><span class="token operator">!</span>invalidPhoneCountryCombination<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">return</span> <span class="token keyword">null</span>
+  <span class="token punctuation">}</span>
+
+  <span class="token keyword">return</span> <span class="token punctuation">(</span>
+    <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>Your phone number country code must match the selected country<span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+  <span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
+
+<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">withState</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token punctuation">{</span> invalidPhoneCountryCombination <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
+  invalidPhoneCountryCombination
+<span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">(</span>Warning<span class="token punctuation">)</span>
+</code></pre>
 
                                 
                                 </section>
@@ -495,12 +532,12 @@ You might have already spot the issue. Trying to satisfy everyone is simply impo
 
             
                 
-                <a href="../Introduction.html" class="navigation navigation-prev " aria-label="Previous page: 1. Introduction">
+                <a href="HandlingSubmit.html" class="navigation navigation-prev " aria-label="Previous page: 3.6. Handling Submit">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="Examples.html" class="navigation navigation-next " aria-label="Next page: 1.2. Examples">
+                <a href="Composition.html" class="navigation navigation-next " aria-label="Next page: 3.8. Composition">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -511,7 +548,7 @@ You might have already spot the issue. Trying to satisfy everyone is simply impo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.1. Motivation","level":"1.2.1","depth":2,"next":{"title":"1.2. Examples","level":"1.2.2","depth":2,"path":"docs/introduction/Examples.md","ref":"docs/introduction/Examples.md","articles":[]},"previous":{"title":"1. Introduction","level":"1.2","depth":1,"path":"docs/Introduction.md","ref":"docs/Introduction.md","articles":[{"title":"1.1. Motivation","level":"1.2.1","depth":2,"path":"docs/introduction/Motivation.md","ref":"docs/introduction/Motivation.md","articles":[]},{"title":"1.2. Examples","level":"1.2.2","depth":2,"path":"docs/introduction/Examples.md","ref":"docs/introduction/Examples.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/introduction/Motivation.md","mtime":"2017-06-11T14:22:42.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-14T20:56:26.846Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"3.7. Using Form State","level":"1.4.7","depth":2,"next":{"title":"3.8. Composition","level":"1.4.8","depth":2,"path":"docs/guides/Composition.md","ref":"docs/guides/Composition.md","articles":[]},"previous":{"title":"3.6. Handling Submit","level":"1.4.6","depth":2,"path":"docs/guides/HandlingSubmit.md","ref":"docs/guides/HandlingSubmit.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/guides/UsingFormState.md","mtime":"2017-06-14T20:26:57.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-14T20:56:26.846Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

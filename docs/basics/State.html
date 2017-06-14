@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="en" >
     <head>
-        <title>1.1. Motivation · Controlled Forms for React and Redux</title>
+        <title>2.3. State · Controlled Forms for React and Redux</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -61,10 +61,10 @@
     <link rel="shortcut icon" href="../../gitbook/images/favicon.ico" type="image/x-icon">
 
     
-    <link rel="next" href="Examples.html" />
+    <link rel="next" href="../Guides.html" />
     
     
-    <link rel="prev" href="../Introduction.html" />
+    <link rel="prev" href="Fields.html" />
     
 
     </head>
@@ -120,9 +120,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter active" data-level="1.2.1" data-path="Motivation.html">
+        <li class="chapter " data-level="1.2.1" data-path="../introduction/Motivation.html">
             
-                <a href="Motivation.html">
+                <a href="../introduction/Motivation.html">
             
                     
                     1.1. Motivation
@@ -133,9 +133,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.2.2" data-path="Examples.html">
+        <li class="chapter " data-level="1.2.2" data-path="../introduction/Examples.html">
             
-                <a href="Examples.html">
+                <a href="../introduction/Examples.html">
             
                     
                     1.2. Examples
@@ -165,9 +165,9 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.3.1" data-path="../basics/Forms.html">
+        <li class="chapter " data-level="1.3.1" data-path="Forms.html">
             
-                <a href="../basics/Forms.html">
+                <a href="Forms.html">
             
                     
                     2.1. Forms
@@ -178,9 +178,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.2" data-path="../basics/Fields.html">
+        <li class="chapter " data-level="1.3.2" data-path="Fields.html">
             
-                <a href="../basics/Fields.html">
+                <a href="Fields.html">
             
                     
                     2.2. Fields
@@ -191,9 +191,9 @@
             
         </li>
     
-        <li class="chapter " data-level="1.3.3" data-path="../basics/State.html">
+        <li class="chapter active" data-level="1.3.3" data-path="State.html">
             
-                <a href="../basics/State.html">
+                <a href="State.html">
             
                     
                     2.3. State
@@ -446,7 +446,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../.." >1.1. Motivation</a>
+        <a href="../.." >2.3. State</a>
     </h1>
 </div>
 
@@ -461,13 +461,15 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="motivation">Motivation</h1>
-<p>You might now think <em>&quot;Oh come one, yet even another form library form React/Redux?&quot;</em> and we totally understand that, but just think about why there are so many solutions in the first place; because form management is not at all a simple task. It might seem trivial to hack together some forms, but it is pretty hard to solve it for everyone without complex APIs, because there are simply tons of different use cases to be considered.</p>
-<p>Now you might say <em>&quot;Ok, and how will this one solve, what none other is able to?&quot;</em>.<br>
-Don&apos;t get us wrong, we really love and appreciate the work done with <a href="https://github.com/erikras/redux-form" _target="blank">redux-form</a>, <a href="https://github.com/davidkpiano/react-redux-form" _target="blank">react-redux-form</a> and all the other great solutions. But, we think the problem is wrong abstraction: Most solutions ship opinionated, declarative React components that abstract all the complex tasks away. They have tons of different props which accept thousands of combinations to satisfy most of the daily use cases.
-You might have already spot the issue. Trying to satisfy everyone is simply impossible.</p>
-<p><strong>Instead of shipping predefined components with lots of built-in features, we instead give you the right abstractions to create your very own forms.</strong></p>
-<p>The only built-in React component is the wrapping <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span></code> element itself. Apart from that, we give provide useful functional HOCs (<a href="Higher%20order%20components">Higher-Order Components</a>) which help you to create all your form components right away.</p>
+                                <h1 id="state">State</h1>
+<p>Within react-controlled-form, we sometimes talk about &quot;form state&quot;. This is neither connected to the field data nor has it to do with React&apos;s component state.<br>
+Actually, &quot;form state&quot; is a built-in part of every <a href="../api/Form.html">Form</a> and can be used to set a certain state in special cases. It is pretty similar to React&apos;s component state or Redux state in general, but is shipped with special APIs to ensure it is encapsulated with every form instance.<br></p>
+<p>It can be especially useful when dealing with complex forms that have several different validation states.</p>
+<h4 id="related">Related</h4>
+<ul>
+<li><a href="../guides/UsingFormState.html">Using Form State</a></li>
+<li><a href="../api/withFormState.md">API Reference - <code>withState</code></a></li>
+</ul>
 
                                 
                                 </section>
@@ -495,12 +497,12 @@ You might have already spot the issue. Trying to satisfy everyone is simply impo
 
             
                 
-                <a href="../Introduction.html" class="navigation navigation-prev " aria-label="Previous page: 1. Introduction">
+                <a href="Fields.html" class="navigation navigation-prev " aria-label="Previous page: 2.2. Fields">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
                 
-                <a href="Examples.html" class="navigation navigation-next " aria-label="Next page: 1.2. Examples">
+                <a href="../Guides.html" class="navigation navigation-next " aria-label="Next page: 3. Guides">
                     <i class="fa fa-angle-right"></i>
                 </a>
                 
@@ -511,7 +513,7 @@ You might have already spot the issue. Trying to satisfy everyone is simply impo
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"1.1. Motivation","level":"1.2.1","depth":2,"next":{"title":"1.2. Examples","level":"1.2.2","depth":2,"path":"docs/introduction/Examples.md","ref":"docs/introduction/Examples.md","articles":[]},"previous":{"title":"1. Introduction","level":"1.2","depth":1,"path":"docs/Introduction.md","ref":"docs/Introduction.md","articles":[{"title":"1.1. Motivation","level":"1.2.1","depth":2,"path":"docs/introduction/Motivation.md","ref":"docs/introduction/Motivation.md","articles":[]},{"title":"1.2. Examples","level":"1.2.2","depth":2,"path":"docs/introduction/Examples.md","ref":"docs/introduction/Examples.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/introduction/Motivation.md","mtime":"2017-06-11T14:22:42.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-14T20:56:26.846Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"2.3. State","level":"1.3.3","depth":2,"next":{"title":"3. Guides","level":"1.4","depth":1,"path":"docs/Guides.md","ref":"docs/Guides.md","articles":[{"title":"3.1. Store Setup","level":"1.4.1","depth":2,"path":"docs/guides/StoreSetup.md","ref":"docs/guides/StoreSetup.md","articles":[]},{"title":"3.2. Form Initialization","level":"1.4.2","depth":2,"path":"docs/guides/FormInitialization.md","ref":"docs/guides/FormInitialization.md","articles":[]},{"title":"3.3. Updating Fields","level":"1.4.3","depth":2,"path":"docs/guides/UpdatingFields.md","ref":"docs/guides/UpdatingFields.md","articles":[]},{"title":"3.4. Form Validation","level":"1.4.4","depth":2,"path":"docs/guides/FormValidation.md","ref":"docs/guides/FormValidation.md","articles":[]},{"title":"3.5. Validation Error","level":"1.4.5","depth":2,"path":"docs/guides/ValidationErrors.md","ref":"docs/guides/ValidationErrors.md","articles":[]},{"title":"3.6. Handling Submit","level":"1.4.6","depth":2,"path":"docs/guides/HandlingSubmit.md","ref":"docs/guides/HandlingSubmit.md","articles":[]},{"title":"3.7. Using Form State","level":"1.4.7","depth":2,"path":"docs/guides/UsingFormState.md","ref":"docs/guides/UsingFormState.md","articles":[]},{"title":"3.8. Composition","level":"1.4.8","depth":2,"path":"docs/guides/Composition.md","ref":"docs/guides/Composition.md","articles":[]}]},"previous":{"title":"2.2. Fields","level":"1.3.2","depth":2,"path":"docs/basics/Fields.md","ref":"docs/basics/Fields.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/basics/State.md","mtime":"2017-06-14T20:07:41.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-14T20:56:26.846Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
