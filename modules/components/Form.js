@@ -5,20 +5,25 @@ import { connect } from 'react-redux'
 import { shallowEqual } from 'recompose'
 
 import objectReduce from '../utils/objectReduce'
-import { initForm, updateField } from '../model/actions'
+import { initForm, resetForm, updateField, updateState } from '../model/actions'
 
 import type { Field } from '../../types/Field'
 
 type FormProps = {
   formId: string,
-  initialFields: string,
+  initialFields?: Object,
+  initialState?: Object,
+  enableDefault?: boolean,
   validate?: Function,
   onChange?: Function,
   onSubmit?: Function,
 
   data: Object,
+  state: Object,
   initForm: Function,
-  updateField: Function
+  resetForm: Function,
+  updateField: Function,
+  updateState: Function
 }
 
 class Form extends Component {
@@ -31,7 +36,9 @@ class Form extends Component {
   constructor(props, context) {
     super(props, context)
 
-    props.initForm(props.initialFields)
+    const { initForm, initialFields, initialState } = props
+
+    initForm(initialFields, initialState)
   }
 
   getChildContext() {
@@ -43,35 +50,56 @@ class Form extends Component {
   }
 
   componentWillReceiveProps(newProps) {
-    const { data, updateField, onChange } = this.props
+    const { data, state, updateField, updateState, onChange } = this.props
 
-    if (onChange && !shallowEqual(data, newProps.data)) {
-      onChange({ data, updateField })
+    if (
+      onChange &&
+      (!shallowEqual(data, newProps.data) ||
+        !shallowEqual(state, newProps.state))
+    ) {
+      onChange({
+        data: newProps.data,
+        previousData: data,
+        state: newProps.state,
+        previousState: state,
+        updateField,
+        updateState
+      })
     }
   }
 
   onSubmit = event => {
-    const { data, updateField, onSubmit } = this.props
+    const {
+      data,
+      state,
+      updateField,
+      resetForm,
+      enableDefault,
+      onSubmit
+    } = this.props
 
     if (onSubmit) {
       onSubmit({
         data,
-        updateField
+        state,
+        updateField,
+        updateState,
+        resetForm
       })
     }
 
-    if (event && event.preventDefault) {
+    if (event && event.preventDefault && !enableDefault) {
       event.preventDefault()
     }
   }
 
   validate = () => {
-    const { data, validate } = this.props
+    const { data, state, validate } = this.props
 
     return objectReduce(
       data,
       (isFormValid, { isValid }) => isValid && isFormValid,
-      validate ? validate(data) : true
+      validate ? validate(data, state) : true
     )
   }
 
@@ -84,8 +112,10 @@ class Form extends Component {
       onSubmit,
       onChange,
       data,
+      state,
       initForm,
       updateField,
+      updateState,
       ...otherProps
     } = this.props
 
@@ -94,12 +124,14 @@ class Form extends Component {
 }
 
 const mapStateToProps = ({ form }: Object, { formId }: Object) => ({
-  data: form[formId]
+  data: form[formId].data,
+  state: form[formId].state
 })
 
 const mapDispatchToProps = (dispatch: Function, { formId }: Object) => ({
-  initForm: (initialFields: Object) =>
-    dispatch(initForm({ formId, initialFields })),
+  initForm: (initialFields: Object, initialState: Object) =>
+    dispatch(initForm({ formId, initialFields, initialState })),
+  resetForm: () => dispatch(resetForm(formId)),
   updateField: (fieldId: string, fieldData: Field) =>
     dispatch(
       updateField({
@@ -107,6 +139,14 @@ const mapDispatchToProps = (dispatch: Function, { formId }: Object) => ({
         fieldId,
         ...fieldData
       })
+    ),
+  updateState: (newState: Object) =>
+    dispatch(
+      updateState({
+        formId,
+        newState
+      })
     )
 })
+
 export default connect(mapStateToProps, mapDispatchToProps)(Form)

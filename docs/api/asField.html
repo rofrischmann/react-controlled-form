@@ -288,6 +288,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.7" >
+            
+                <span>
+            
+                    
+                    3.7. Using Form State
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../guides/Composition.html">
+            
+                <a href="../guides/Composition.html">
+            
+                    
+                    3.8. Composition
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -422,11 +448,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="asfieldcomponent"><code>asField(component)</code></h1>
+                                <h1 id="asfieldcomponent-defaultfield"><code>asField(component, [defaultField])</code></h1>
 <p>Probably the most common HoC. It is used to turn any ordinary React component into fully integrated form field that gets all required methods and data passed via props.</p>
 <h2 id="arguments">Arguments</h2>
 <ol>
 <li><code>component</code> (<em>ReactComponent</em>): A React component that gets enhanced.</li>
+<li><code>defaultField</code> (<em>Object?</em>): Default field data that applies to every <code>component</code>. The data will be overwritten by <code>initialFields</code> passed to the wrapping <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Form</span><span class="token punctuation">&gt;</span></span></code> component.</li>
 </ol>
 <h4 id="props">Props</h4>
 <p>The <code>component</code> receives a set of props that are passed down by the HoC.
@@ -440,11 +467,6 @@ All props automatically update if a change is triggered for this field.</p>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>updateField</td>
-<td>(<em>Function</em>)</td>
-<td>Updates the field data. Takes an object with <code>isEnabled</code>, <code>isRequired</code>, <code>isTouched</code>, <code>isValid</code> and <code>value</code>. Each value is optional though.</td>
-</tr>
 <tr>
 <td>value</td>
 <td>(<em>any</em>)</td>
@@ -469,6 +491,21 @@ All props automatically update if a change is triggered for this field.</p>
 <td>isTouched</td>
 <td>(<em>Boolean</em>)</td>
 <td>Indicates if the field is touched.<br><em>(Returns true as soon as user input happens, but remains false for initialization)</em>.</td>
+</tr>
+<tr>
+<td>state</td>
+<td>(<em>Object</em>)</td>
+<td>The form-scoped state</td>
+</tr>
+<tr>
+<td>updateField</td>
+<td>(<em>Function</em>)</td>
+<td>Updates the field data. Takes an object with <code>isEnabled</code>, <code>isRequired</code>, <code>isTouched</code>, <code>isValid</code> and <code>value</code>. Each value is optional though.</td>
+</tr>
+<tr>
+<td>updateState</td>
+<td>(<em>Function</em>)</td>
+<td>Updates the form-scoped state. Takes an object of new state keys and merges those with the existing state.</td>
 </tr>
 </tbody>
 </table>
@@ -500,7 +537,13 @@ All props automatically update if a change is triggered for this field.</p>
   <span class="token keyword">return</span> <span class="token operator">&lt;</span>input value<span class="token operator">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span> onInput<span class="token operator">=</span><span class="token punctuation">{</span>e <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">updateField</span><span class="token punctuation">(</span><span class="token punctuation">{</span> value<span class="token punctuation">:</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value <span class="token punctuation">}</span><span class="token punctuation">)</span><span class="token punctuation">}</span>  <span class="token operator">/</span><span class="token operator">&gt;</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">const</span> Input <span class="token operator">=</span> <span class="token function">asField</span><span class="token punctuation">(</span>InputField<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// make every input auto-required</span>
+<span class="token comment" spellcheck="true">// and thus invalid by default</span>
+<span class="token keyword">const</span> defaultData <span class="token operator">=</span> <span class="token punctuation">{</span>
+  isRequired<span class="token punctuation">:</span> <span class="token boolean">true</span><span class="token punctuation">,</span>
+  isValid<span class="token punctuation">:</span> <span class="token boolean">false</span>
+<span class="token punctuation">}</span>
+<span class="token keyword">const</span> Input <span class="token operator">=</span> <span class="token function">asField</span><span class="token punctuation">(</span>InputField<span class="token punctuation">,</span> defaultData<span class="token punctuation">)</span>
 
 <span class="token comment" spellcheck="true">// usage</span>
 <span class="token operator">&lt;</span>Input fieldId<span class="token operator">=</span><span class="token string">&quot;firstname&quot;</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
@@ -555,7 +598,7 @@ All props automatically update if a change is triggered for this field.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.2. asField","level":"1.5.2","depth":2,"next":{"title":"4.3. asSubmit","level":"1.5.3","depth":2,"path":"docs/api/asSubmit.md","ref":"docs/api/asSubmit.md","articles":[]},"previous":{"title":"4.1. Form","level":"1.5.1","depth":2,"path":"docs/api/Form.md","ref":"docs/api/Form.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/api/asField.md","mtime":"2017-06-11T18:13:25.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-11T19:52:30.556Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.2. asField","level":"1.5.2","depth":2,"next":{"title":"4.3. asSubmit","level":"1.5.3","depth":2,"path":"docs/api/asSubmit.md","ref":"docs/api/asSubmit.md","articles":[]},"previous":{"title":"4.1. Form","level":"1.5.1","depth":2,"path":"docs/api/Form.md","ref":"docs/api/Form.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/api/asField.md","mtime":"2017-06-14T14:13:25.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-14T14:13:33.045Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

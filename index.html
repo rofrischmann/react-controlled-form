@@ -286,6 +286,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.7" >
+            
+                <span>
+            
+                    
+                    3.7. Using Form State
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="docs/guides/Composition.html">
+            
+                <a href="docs/guides/Composition.html">
+            
+                    
+                    3.8. Composition
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -427,14 +453,15 @@ It ships functional APIs to create your very own form fields and is built with <
 You do not have to struggle with predefined input components ever again!</p>
 <p><img alt="TravisCI" src="https://travis-ci.org/rofrischmann/react-controlled-form.svg?branch=master"> <a href="https://codeclimate.com/github/rofrischmann/react-controlled-form/coverage" _target="blank"><img alt="Test Coverage" src="https://codeclimate.com/github/rofrischmann/react-controlled-form/badges/coverage.svg"></a> <img alt="npm downloads" src="https://img.shields.io/npm/dm/react-controlled-form.svg"> <img alt="npm version" src="https://badge.fury.io/js/react-controlled-form.svg"></p>
 <h2 id="installation">Installation</h2>
+<pre class="language-"><code class="lang-sh">yarn add react-controlled-form react react-redux redux
+</code></pre>
 <blockquote>
 <p>Controlled Forms requires <code>react-redux</code> to be installed in your project. Therefore, <code>react</code> and <code>redux</code> must also be installed.</p>
 </blockquote>
-<pre class="language-"><code class="lang-sh">yarn add react-controlled-form react react-redux redux
-</code></pre>
 <h2 id="benefits">Benefits</h2>
 <ul>
-<li>simple API</li>
+<li>simple functional API</li>
+<li>Redux-driven state management</li>
 <li>full flexibility</li>
 <li>custom form fields</li>
 <li>reactive forms</li>
@@ -459,7 +486,8 @@ You do not have to struggle with predefined input components ever again!</p>
       value<span class="token operator">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span>
       required<span class="token operator">=</span><span class="token punctuation">{</span>isRequired<span class="token punctuation">}</span>
       disabled<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">!</span>isEnabled<span class="token punctuation">}</span>
-      onInput<span class="token operator">=</span><span class="token punctuation">{</span>onInput<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+      onInput<span class="token operator">=</span><span class="token punctuation">{</span>onInput<span class="token punctuation">}</span>
+    <span class="token operator">/</span><span class="token operator">&gt;</span>
   <span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
@@ -540,7 +568,7 @@ Created with &#x2665; by <a href="http://rofrischmann.de" _target="blank">@rofri
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"Read Me","level":"1.1","depth":1,"next":{"title":"1. Introduction","level":"1.2","depth":1,"path":"docs/Introduction.md","ref":"docs/Introduction.md","articles":[{"title":"1.1. Motivation","level":"1.2.1","depth":2,"path":"docs/introduction/Motivation.md","ref":"docs/introduction/Motivation.md","articles":[]},{"title":"1.2. Examples","level":"1.2.2","depth":2,"path":"docs/introduction/Examples.md","ref":"docs/introduction/Examples.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"README.md","mtime":"2017-06-11T18:50:49.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-11T19:52:30.556Z"},"basePath":".","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"Read Me","level":"1.1","depth":1,"next":{"title":"1. Introduction","level":"1.2","depth":1,"path":"docs/Introduction.md","ref":"docs/Introduction.md","articles":[{"title":"1.1. Motivation","level":"1.2.1","depth":2,"path":"docs/introduction/Motivation.md","ref":"docs/introduction/Motivation.md","articles":[]},{"title":"1.2. Examples","level":"1.2.2","depth":2,"path":"docs/introduction/Examples.md","ref":"docs/introduction/Examples.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"README.md","mtime":"2017-06-14T14:13:25.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-14T14:13:33.045Z"},"basePath":".","book":{"language":""}});
         });
     </script>
 </div>

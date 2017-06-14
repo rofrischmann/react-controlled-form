@@ -286,6 +286,32 @@
             
         </li>
     
+        <li class="chapter " data-level="1.4.7" >
+            
+                <span>
+            
+                    
+                    3.7. Using Form State
+            
+                </span>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.4.8" data-path="../guides/Composition.html">
+            
+                <a href="../guides/Composition.html">
+            
+                    
+                    3.8. Composition
+            
+                </a>
+            
+
+            
+        </li>
+    
 
             </ul>
             
@@ -420,12 +446,12 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="withdatamapdatatoprops"><code>withData(mapDataToProps)</code></h1>
+                                <h1 id="withdatamapdatatoprops"><code>withData([mapDataToProps])</code></h1>
 <p>It&apos;s basically a simplified &amp; scoped convenient wrapper for react-redux&apos;s <code>connect</code>.<br>
 It helps to provide form data to any React component.</p>
 <h2 id="arguments">Arguments</h2>
 <ol>
-<li><code>mapDataToProps</code> (<em>Function?</em>): A function that maps the form data to the component props. It has the signature <em>data =&gt; Object</em>. By default it passes the whole form data as the <code>data</code> prop.</li>
+<li><code>mapDataToProps</code> (<em>Function?</em>): A function that maps the form data to the component props. It has the signature <em>(data, ownProps) =&gt; Object</em>. By default it passes the whole form data as the <code>data</code> prop. ownProps refers to the props passed to the enhanced component itself.</li>
 </ol>
 <h2 id="returns">Returns</h2>
 <p>(<em>Function</em>) HoC that is used to apply the data mapping</p>
@@ -489,7 +515,7 @@ It helps to provide form data to any React component.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.5. withData","level":"1.5.5","depth":2,"previous":{"title":"4.4. asReset","level":"1.5.4","depth":2,"path":"docs/api/asReset.md","ref":"docs/api/asReset.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/api/withData.md","mtime":"2017-06-09T21:47:56.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-11T19:52:30.556Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.5. withData","level":"1.5.5","depth":2,"previous":{"title":"4.4. asReset","level":"1.5.4","depth":2,"path":"docs/api/asReset.md","ref":"docs/api/asReset.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/api/withData.md","mtime":"2017-06-14T14:13:25.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-14T14:13:33.045Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>
