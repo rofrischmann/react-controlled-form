@@ -372,12 +372,26 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="../api/Form.html">
+        <li class="chapter " data-level="1.5.1" >
             
-                <a href="../api/Form.html">
+                <span>
             
                     
-                    4.1. Form
+                    4.1. Core
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="../api/core/Form.html">
+            
+                <a href="../api/core/Form.html">
+            
+                    
+                    4.1.1. Form
             
                 </a>
             
@@ -385,12 +399,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="../api/asField.html">
+        <li class="chapter " data-level="1.5.1.2" data-path="../api/core/asField.html">
             
-                <a href="../api/asField.html">
+                <a href="../api/core/asField.html">
             
                     
-                    4.2. asField
+                    4.1.2. asField
             
                 </a>
             
@@ -398,12 +412,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="../api/asSubmit.html">
+        <li class="chapter " data-level="1.5.1.3" data-path="../api/core/asSubmit.html">
             
-                <a href="../api/asSubmit.html">
+                <a href="../api/core/asSubmit.html">
             
                     
-                    4.3. asSubmit
+                    4.1.3. asSubmit
             
                 </a>
             
@@ -411,12 +425,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="../api/asReset.html">
+        <li class="chapter " data-level="1.5.1.4" data-path="../api/core/asReset.html">
             
-                <a href="../api/asReset.html">
+                <a href="../api/core/asReset.html">
             
                     
-                    4.4. asReset
+                    4.1.4. asReset
             
                 </a>
             
@@ -424,12 +438,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="../api/withData.html">
+        <li class="chapter " data-level="1.5.1.5" data-path="../api/core/withData.html">
             
-                <a href="../api/withData.html">
+                <a href="../api/core/withData.html">
             
                     
-                    4.5. withData
+                    4.1.5. withData
             
                 </a>
             
@@ -437,16 +451,66 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.6" data-path="../api/withState.html">
+        <li class="chapter " data-level="1.5.1.6" data-path="../api/core/withState.html">
             
-                <a href="../api/withState.html">
+                <a href="../api/core/withState.html">
             
                     
-                    4.6. withState
+                    4.1.6. withState
             
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    4.2. Utilities
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="../api/utils/mapDataToValues.html">
+            
+                <a href="../api/utils/mapDataToValues.html">
+            
+                    
+                    4.2.1. mapDataToValues
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="../api/utils/validateWithRequired.html">
+            
+                <a href="../api/utils/validateWithRequired.html">
+            
+                    
+                    4.2.2. validateWithRequired
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -506,7 +570,7 @@
 <p>Right, since the form data and state is fully handled by Redux under the hood, you can choose any Redux devTool to debug your form data and even use features like time traveling.<br>
 Another helpful pattern is to provide the Redux store as a global window property by adding <code>window.store = store</code> just after your store setup. <em>(check the <a href="../introduction/Examples.html">examples</a> on how this works)</em>.</p>
 <h2 id="displaying-formatted-json">Displaying formatted JSON</h2>
-<p>If you&apos;ve already checked one of the <a href="../introduction/Examples.html">examples</a>, you may have seen the simple yet helpful JSON representation of the form data. It shows the whole form data at any point of time and updates automatically as properties change. It is rendered using a combination of the <a href="../api/withData.html"><code>withData</code></a>-HOC and <code>JSON.stringify</code> with its third parameter.</p>
+<p>If you&apos;ve already checked one of the <a href="../introduction/Examples.html">examples</a>, you may have seen the simple yet helpful JSON representation of the form data. It shows the whole form data at any point of time and updates automatically as properties change. It is rendered using a combination of the <a href="../api/withData.md"><code>withData</code></a>-HOC and <code>JSON.stringify</code> with its third parameter.</p>
 <h4 id="example">Example</h4>
 <blockquote>
 <p>It must be rendered inside the <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Form</span><span class="token punctuation">&gt;</span></span></code>-component to show any effect.</p>
@@ -563,7 +627,7 @@ Another helpful pattern is to provide the Redux store as a global window propert
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.0. Debugging Forms","level":"1.4.10","depth":2,"next":{"title":"4. API Reference","level":"1.5","depth":1,"path":"docs/API.md","ref":"docs/API.md","articles":[{"title":"4.1. Form","level":"1.5.1","depth":2,"path":"docs/api/Form.md","ref":"docs/api/Form.md","articles":[]},{"title":"4.2. asField","level":"1.5.2","depth":2,"path":"docs/api/asField.md","ref":"docs/api/asField.md","articles":[]},{"title":"4.3. asSubmit","level":"1.5.3","depth":2,"path":"docs/api/asSubmit.md","ref":"docs/api/asSubmit.md","articles":[]},{"title":"4.4. asReset","level":"1.5.4","depth":2,"path":"docs/api/asReset.md","ref":"docs/api/asReset.md","articles":[]},{"title":"4.5. withData","level":"1.5.5","depth":2,"path":"docs/api/withData.md","ref":"docs/api/withData.md","articles":[]},{"title":"4.6. withState","level":"1.5.6","depth":2,"path":"docs/api/withState.md","ref":"docs/api/withState.md","articles":[]}]},"previous":{"title":"3.9. Using Third-Party Components","level":"1.4.9","depth":2,"path":"docs/guides/ThirdPartyComponent.md","ref":"docs/guides/ThirdPartyComponent.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/guides/DebuggingForms.md","mtime":"2017-06-20T20:39:37.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-20T20:55:25.200Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.0. Debugging Forms","level":"1.4.10","depth":2,"next":{"title":"4. API Reference","level":"1.5","depth":1,"path":"docs/API.md","ref":"docs/API.md","articles":[{"title":"4.1. Core","level":"1.5.1","depth":2,"ref":"","articles":[{"title":"4.1.1. Form","level":"1.5.1.1","depth":3,"path":"docs/api/core/Form.md","ref":"docs/api/core/Form.md","articles":[]},{"title":"4.1.2. asField","level":"1.5.1.2","depth":3,"path":"docs/api/core/asField.md","ref":"docs/api/core/asField.md","articles":[]},{"title":"4.1.3. asSubmit","level":"1.5.1.3","depth":3,"path":"docs/api/core/asSubmit.md","ref":"docs/api/core/asSubmit.md","articles":[]},{"title":"4.1.4. asReset","level":"1.5.1.4","depth":3,"path":"docs/api/core/asReset.md","ref":"docs/api/core/asReset.md","articles":[]},{"title":"4.1.5. withData","level":"1.5.1.5","depth":3,"path":"docs/api/core/withData.md","ref":"docs/api/core/withData.md","articles":[]},{"title":"4.1.6. withState","level":"1.5.1.6","depth":3,"path":"docs/api/core/withState.md","ref":"docs/api/core/withState.md","articles":[]}]},{"title":"4.2. Utilities","level":"1.5.2","depth":2,"ref":"","articles":[{"title":"4.2.1. mapDataToValues","level":"1.5.2.1","depth":3,"path":"docs/api/utils/mapDataToValues.md","ref":"docs/api/utils/mapDataToValues.md","articles":[]},{"title":"4.2.2. validateWithRequired","level":"1.5.2.2","depth":3,"path":"docs/api/utils/validateWithRequired.md","ref":"docs/api/utils/validateWithRequired.md","articles":[]}]}]},"previous":{"title":"3.9. Using Third-Party Components","level":"1.4.9","depth":2,"path":"docs/guides/ThirdPartyComponent.md","ref":"docs/guides/ThirdPartyComponent.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/guides/DebuggingForms.md","mtime":"2017-06-23T11:40:31.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-23T13:51:38.899Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

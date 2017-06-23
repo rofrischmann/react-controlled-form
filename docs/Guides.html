@@ -372,12 +372,26 @@
             <ul class="articles">
                 
     
-        <li class="chapter " data-level="1.5.1" data-path="api/Form.html">
+        <li class="chapter " data-level="1.5.1" >
             
-                <a href="api/Form.html">
+                <span>
             
                     
-                    4.1. Form
+                    4.1. Core
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.1.1" data-path="api/core/Form.html">
+            
+                <a href="api/core/Form.html">
+            
+                    
+                    4.1.1. Form
             
                 </a>
             
@@ -385,12 +399,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.2" data-path="api/asField.html">
+        <li class="chapter " data-level="1.5.1.2" data-path="api/core/asField.html">
             
-                <a href="api/asField.html">
+                <a href="api/core/asField.html">
             
                     
-                    4.2. asField
+                    4.1.2. asField
             
                 </a>
             
@@ -398,12 +412,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.3" data-path="api/asSubmit.html">
+        <li class="chapter " data-level="1.5.1.3" data-path="api/core/asSubmit.html">
             
-                <a href="api/asSubmit.html">
+                <a href="api/core/asSubmit.html">
             
                     
-                    4.3. asSubmit
+                    4.1.3. asSubmit
             
                 </a>
             
@@ -411,12 +425,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.4" data-path="api/asReset.html">
+        <li class="chapter " data-level="1.5.1.4" data-path="api/core/asReset.html">
             
-                <a href="api/asReset.html">
+                <a href="api/core/asReset.html">
             
                     
-                    4.4. asReset
+                    4.1.4. asReset
             
                 </a>
             
@@ -424,12 +438,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.5" data-path="api/withData.html">
+        <li class="chapter " data-level="1.5.1.5" data-path="api/core/withData.html">
             
-                <a href="api/withData.html">
+                <a href="api/core/withData.html">
             
                     
-                    4.5. withData
+                    4.1.5. withData
             
                 </a>
             
@@ -437,16 +451,66 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.6" data-path="api/withState.html">
+        <li class="chapter " data-level="1.5.1.6" data-path="api/core/withState.html">
             
-                <a href="api/withState.html">
+                <a href="api/core/withState.html">
             
                     
-                    4.6. withState
+                    4.1.6. withState
             
                 </a>
             
 
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2" >
+            
+                <span>
+            
+                    
+                    4.2. Utilities
+            
+                </span>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.5.2.1" data-path="api/utils/mapDataToValues.html">
+            
+                <a href="api/utils/mapDataToValues.html">
+            
+                    
+                    4.2.1. mapDataToValues
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.5.2.2" data-path="api/utils/validateWithRequired.html">
+            
+                <a href="api/utils/validateWithRequired.html">
+            
+                    
+                    4.2.2. validateWithRequired
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
             
         </li>
     
@@ -503,9 +567,26 @@
                                 <h1 id="guides">Guides</h1>
 <ul>
 <li><a href="guides/StoreSetup.html">Store Setup</a></li>
-<li><a href="guides/FormInitialization.html">Form Initialization</a></li>
-<li><a href="guides/UpdatingFields.html">Updating Fields</a></li>
-<li><a href="guides/FormValidation.html">Form Validation</a></li>
+<li><a href="guides/FormInitialization.html">Form Initialization</a><ul>
+<li><a href="guides/FormInitialization.html#per-field-initialization">Per-Field Initialization</a></li>
+<li><a href="guides/FormInitialization.html#per-component-initialization">Per-Component Initialization</a></li>
+</ul>
+</li>
+<li><a href="guides/UpdatingFields.html">Updating Fields</a><ul>
+<li><a href="guides/UpdatingFields.html#update-on-user-input">Update on User Input</a></li>
+<li><a href="guides/UpdatingFields.html#update-on-form-change">Update on Form Change</a></li>
+</ul>
+</li>
+<li><a href="guides/FormValidation.html">Form Validation</a><ul>
+<li><a href="guides/FormValidation.html#global-validation">Global Validation</a></li>
+<li><a href="guides/FormValidation.html#per-field-validation">Per-Field Validation</a><ul>
+<li><a href="guides/FormValidation.html#on-user-input">On User Input</a></li>
+<li><a href="guides/FormValidation.html#on-blur">On Blur</a></li>
+<li><a href="guides/FormValidation.html#on-submit">On Submit</a></li>
+</ul>
+</li>
+</ul>
+</li>
 <li><a href="guides/ValidationErrors.html">Validation Errors</a></li>
 <li><a href="guides/HandlingSubmit.html">Handling Submit</a></li>
 <li><a href="guides/UsingFormState.html">Using Form State</a></li>
@@ -556,7 +637,7 @@
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"3. Guides","level":"1.4","depth":1,"next":{"title":"3.1. Store Setup","level":"1.4.1","depth":2,"path":"docs/guides/StoreSetup.md","ref":"docs/guides/StoreSetup.md","articles":[]},"previous":{"title":"2.3. State","level":"1.3.3","depth":2,"path":"docs/basics/State.md","ref":"docs/basics/State.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/Guides.md","mtime":"2017-06-20T20:31:18.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-20T20:55:25.200Z"},"basePath":"..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"3. Guides","level":"1.4","depth":1,"next":{"title":"3.1. Store Setup","level":"1.4.1","depth":2,"path":"docs/guides/StoreSetup.md","ref":"docs/guides/StoreSetup.md","articles":[]},"previous":{"title":"2.3. State","level":"1.3.3","depth":2,"path":"docs/basics/State.md","ref":"docs/basics/State.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/Guides.md","mtime":"2017-06-23T11:46:34.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-06-23T13:51:38.899Z"},"basePath":"..","book":{"language":""}});
         });
     </script>
 </div>
