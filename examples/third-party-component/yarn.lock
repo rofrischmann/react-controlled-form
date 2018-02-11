@@ -2439,10 +2439,6 @@ fast-levenshtein@~2.0.4:
   version "2.0.6"
   resolved "https://registry.yarnpkg.com/fast-levenshtein/-/fast-levenshtein-2.0.6.tgz#3d8a5c66883a16a30ca8643e851f19baa7797917"
 
-fast-loops@^1.0.0:
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/fast-loops/-/fast-loops-1.0.0.tgz#2cdd7e0ff67343b2b5f5e627d855a50b4bed559a"
-
 fastparse@^1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/fastparse/-/fastparse-1.1.1.tgz#d1e2643b38a94d7583b479060e6c4affc94071f8"
@@ -5065,11 +5061,10 @@ rc@^1.0.1, rc@^1.1.6, rc@^1.1.7:
     minimist "^1.2.0"
     strip-json-comments "~2.0.1"
 
-react-controlled-form@^3.0.0:
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/react-controlled-form/-/react-controlled-form-3.0.0.tgz#d5dcffd7b1022fdec39b8a31e870a291ddaffb22"
+react-controlled-form@^2.0.0:
+  version "2.0.0"
+  resolved "https://registry.yarnpkg.com/react-controlled-form/-/react-controlled-form-2.0.0.tgz#2ff340c188fe88409fa26b0b216f49337c656a1a"
   dependencies:
-    fast-loops "^1.0.0"
     prop-types "^15.5.10"
     recompose "^0.23.5"
     redux-actions "^2.0.3"
