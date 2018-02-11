@@ -1,26 +1,23 @@
+import Field from './components/Field'
 import Form from './components/Form'
-
-import asField from './hocs/asField'
-import asReset from './hocs/asReset'
-import asSubmit from './hocs/asSubmit'
-import asUpdate from './hocs/asUpdate'
-import withData from './hocs/withData'
-import withState from './hocs/withState'
 
 import validateWithRequired from './helper/validateWithRequired'
 import mapDataToValues from './helper/mapDataToValues'
 
-import formReducer from './model/reducers'
+import { REDUCER_NAMESPACE } from './model/reducers/_namespace'
+import reducer from './model/reducers'
+
+const formReducer = {
+  [REDUCER_NAMESPACE]: reducer,
+}
 
 export {
+  // components
+  Field,
   Form,
-  asField,
-  asReset,
-  asSubmit,
-  asUpdate,
-  withData,
-  withState,
+  // reducer
   formReducer,
+  // helper
   validateWithRequired,
-  mapDataToValues
+  mapDataToValues,
 }

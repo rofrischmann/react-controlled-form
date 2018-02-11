@@ -1,31 +1,35 @@
 {
   "name": "react-controlled-form",
-  "version": "1.2.1",
+  "version": "3.0.0",
   "description": "Controlled Forms for React and Redux",
   "main": "lib/index.js",
+  "module": "es/index.js",
+  "jsnext:main": "es/index.js",
   "files": [
     "LICENSE",
     "README.md",
-    "Changelog.md",
-    "lib/"
+    "lib/**",
+    "es/**"
   ],
   "scripts": {
-    "babel": "rimraf lib && babel -d lib modules",
-    "check": "yarn run format && yarn run lint && yarn run flow && yarn run test:coverage",
+    "babel": "BABEL_ENV=commonjs babel -d lib modules && babel -d es modules",
+    "bootstrap": "lerna bootstrap",
+    "clean": "learn clean --yes",
+    "clear": "rimraf coverage _book lib es",
+    "check": "yarn format && yarn lint && yarn coverage && yarn flow",
     "docs": "gitbook install && gitbook build && gh-pages -d _book",
-    "flow": "flow modules",
-    "format": "prettier --single-quote --no-semi --jsx-bracket-same-line --write \"modules/**/*.js\"",
+    "format": "prettier --write \"examples/*/src/**/*.js\" && prettier --write \"modules/**/*.js\"",
+    "flow": "flow",
     "lint": "eslint modules",
-    "release": "yarn run check && yarn run babel && yarn publish",
-    "test": "jest",
-    "test:coverage": "jest --coverage"
+    "release": "npm run check && npm run babel && lerna publish && yarn docs",
+    "test": "cross-env BABEL_ENV=commonjs jest",
+    "coverage": "yarn test -- --coverage",
+    "watch": "yarn test -- --watch",
+    "setup": "yarn clear && yarn bootstrap && yarn babel"
   },
   "repository": "https://github.com/rofrischmann/react-controlled-form",
   "author": "Robin Frischmann",
   "license": "MIT",
-  "jest": {
-    "rootDir": "modules"
-  },
   "keywords": [
     "react",
     "react-form",
@@ -35,6 +39,7 @@
     "controlled-form"
   ],
   "dependencies": {
+    "fast-loops": "^1.0.0",
     "prop-types": "^15.5.10",
     "recompose": "^0.23.5",
     "redux-actions": "^2.0.3"
@@ -47,12 +52,13 @@
     "babel-cli": "^6.24.1",
     "babel-core": "^6.22.1",
     "babel-eslint": "^7.1.1",
-    "babel-jest": "^18.0.0",
+    "babel-jest": "20.0.0",
     "babel-plugin-add-module-exports": "^0.2.1",
     "babel-preset-es2015": "^6.22.0",
     "babel-preset-react": "^6.24.1",
     "babel-preset-stage-0": "^6.22.0",
     "codeclimate-test-reporter": "^0.4.0",
+    "cross-env": "^5.1.3",
     "eslint": "^3.14.1",
     "eslint-config-airbnb": "^14.0.0",
     "eslint-plugin-flowtype": "^2.30.0",
@@ -67,8 +73,10 @@
     "gitbook-plugin-edit-link": "^2.0.2",
     "gitbook-plugin-github": "^2.0.0",
     "gitbook-plugin-prism": "^2.2.0",
-    "jest": "^18.1.0",
-    "prettier": "^1.3.1",
+    "jest": "20.0.4",
+    "jest-cli": "^21.1.0",
+    "lerna": "^2.8.0",
+    "prettier": "^1.7.0",
     "react": "^15.5.4",
     "react-redux": "^5.0.5",
     "rimraf": "^2.6.1"

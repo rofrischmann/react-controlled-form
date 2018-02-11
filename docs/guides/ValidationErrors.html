@@ -314,25 +314,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.8" data-path="Composition.html">
-            
-                <a href="Composition.html">
-            
-                    
-                    3.8. Composition
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.9" data-path="ThirdPartyComponent.html">
+        <li class="chapter " data-level="1.4.8" data-path="ThirdPartyComponent.html">
             
                 <a href="ThirdPartyComponent.html">
             
                     
-                    3.9. Using Third-Party Components
+                    3.8. Using Third-Party Components
             
                 </a>
             
@@ -340,7 +327,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.10" data-path="DebuggingForms.html">
+        <li class="chapter " data-level="1.4.9" data-path="DebuggingForms.html">
             
                 <a href="DebuggingForms.html">
             
@@ -399,77 +386,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.1.2" data-path="../api/core/asField.html">
+        <li class="chapter " data-level="1.5.1.2" data-path="../api/core/Field.html">
             
-                <a href="../api/core/asField.html">
-            
-                    
-                    4.1.2. asField
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.1.3" data-path="../api/core/asUpdate.html">
-            
-                <a href="../api/core/asUpdate.html">
+                <a href="../api/core/Field.html">
             
                     
-                    4.1.3. asUpdate
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.1.4" data-path="../api/core/asSubmit.html">
-            
-                <a href="../api/core/asSubmit.html">
-            
-                    
-                    4.1.4. asSubmit
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.1.5" data-path="../api/core/asReset.html">
-            
-                <a href="../api/core/asReset.html">
-            
-                    
-                    4.1.5. asReset
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.1.6" data-path="../api/core/withData.html">
-            
-                <a href="../api/core/withData.html">
-            
-                    
-                    4.1.6. withData
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.1.7" data-path="../api/core/withState.html">
-            
-                <a href="../api/core/withState.html">
-            
-                    
-                    4.1.7. withState
+                    4.1.2. Field
             
                 </a>
             
@@ -583,58 +505,66 @@
 <p>The most primitive way is to simply do that within the input component.<br>
 Let&apos;s take the previous example and add a validation message.</p>
 <h4 id="example">Example</h4>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> asField <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-controlled-form&apos;</span>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Field <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-controlled-form&apos;</span>
 
 <span class="token keyword">function</span> <span class="token function">validate</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token punctuation">{</span>
   <span class="token keyword">return</span> value<span class="token punctuation">.</span><span class="token function">match</span><span class="token punctuation">(</span><span class="token regex">/^\d+$/</span><span class="token punctuation">)</span> <span class="token operator">!==</span> <span class="token keyword">null</span> <span class="token operator">&amp;&amp;</span> <span class="token function">parseInt</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span> <span class="token operator">&gt;</span> <span class="token number">0</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">const</span> Age <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> updateField<span class="token punctuation">,</span> value<span class="token punctuation">,</span> isValid <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
-  <span class="token keyword">function</span> <span class="token function">onInput</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">const</span> value <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
+<span class="token keyword">function</span> <span class="token function">InputWithValidation</span><span class="token punctuation">(</span><span class="token punctuation">{</span> value<span class="token punctuation">,</span> isValid<span class="token punctuation">,</span> updateField <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">function</span> <span class="token function">onChange</span><span class="token punctuation">(</span>e<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+    <span class="token keyword">const</span> nextValue <span class="token operator">=</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value
 
     <span class="token function">updateField</span><span class="token punctuation">(</span><span class="token punctuation">{</span>
-      isValid<span class="token punctuation">:</span> <span class="token function">validate</span><span class="token punctuation">(</span>value<span class="token punctuation">)</span><span class="token punctuation">,</span>
-      value
+      isValid<span class="token punctuation">:</span> <span class="token function">validate</span><span class="token punctuation">(</span>nextValue<span class="token punctuation">)</span><span class="token punctuation">,</span>
+      nextValue
     <span class="token punctuation">}</span><span class="token punctuation">)</span>
   <span class="token punctuation">}</span>
 
-  <span class="token keyword">const</span> errorMessage <span class="token operator">=</span> isValid <span class="token operator">?</span> <span class="token keyword">null</span> <span class="token punctuation">:</span> <span class="token punctuation">(</span>
+  <span class="token keyword">const</span> warning <span class="token operator">=</span> isValid <span class="token operator">?</span> <span class="token keyword">null</span> <span class="token punctuation">:</span> <span class="token punctuation">(</span>
     <span class="token operator">&lt;</span>span style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span> color<span class="token punctuation">:</span> <span class="token string">&apos;red&apos;</span> <span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>Only real positive numbers are allowed<span class="token punctuation">.</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
   <span class="token punctuation">)</span>
 
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
     <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
-      <span class="token operator">&lt;</span>input value<span class="token operator">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span> onInput<span class="token operator">=</span><span class="token punctuation">{</span>onInput<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
-      <span class="token punctuation">{</span>errorMessage<span class="token punctuation">}</span>
+      <span class="token operator">&lt;</span>input 
+        value<span class="token operator">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span> 
+        onChange<span class="token operator">=</span><span class="token punctuation">{</span>onChange<span class="token punctuation">}</span>
+        style<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">{</span>
+          <span class="token comment" spellcheck="true">// simple way to indicate field validation</span>
+          color<span class="token punctuation">:</span> isValid <span class="token operator">?</span> <span class="token string">&apos;green&apos;</span> <span class="token punctuation">:</span> <span class="token string">&apos;red&apos;</span>
+        <span class="token punctuation">}</span><span class="token punctuation">}</span>
+      <span class="token operator">/</span><span class="token operator">&gt;</span>
+      <span class="token punctuation">{</span>warning<span class="token punctuation">}</span>
     <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
   <span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">asField</span><span class="token punctuation">(</span>Age<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// Usage</span>
+<span class="token operator">&lt;</span>Field fieldId<span class="token operator">=</span><span class="token string">&apos;age&apos;</span> render<span class="token operator">=</span><span class="token punctuation">{</span>InputWithValidation<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
 </code></pre>
 <h2 id="flexible-error-messages">Flexible Error Messages</h2>
 <p>For many use cases, the primitive implementation is just fine. Yet, sometimes we want more flexible advanced error message. For example, if we want to show a message that depends on the validation state of multiple form fields. Another example would be, to display the message somewhere else e.g. in a dedicated form validation overlayer.</p>
-<p>Luckily, we can achieve that using the <code>withData</code>-API, which allows us to provide form data to any React component.</p>
 <h4 id="example">Example</h4>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> withData <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-controlled-form&apos;</span>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Form <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-controlled-form&apos;</span>
 
-<span class="token keyword">const</span> Message <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> isValid<span class="token punctuation">,</span> country <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>isValid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
+<span class="token keyword">function</span> Message <span class="token punctuation">(</span><span class="token punctuation">{</span> age<span class="token punctuation">,</span> country <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">if</span> <span class="token punctuation">(</span>age<span class="token punctuation">.</span>isValid<span class="token punctuation">)</span> <span class="token punctuation">{</span>
     <span class="token keyword">return</span> <span class="token keyword">null</span>
   <span class="token punctuation">}</span>
 
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>You are not allowed to smoke under the age <span class="token keyword">of</span> <span class="token number">18</span> <span class="token keyword">in</span> <span class="token punctuation">{</span>country<span class="token punctuation">}</span><span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>span<span class="token operator">&gt;</span>You are not allowed to smoke under the age <span class="token keyword">of</span> <span class="token number">18</span> <span class="token keyword">in</span> <span class="token punctuation">{</span>country<span class="token punctuation">.</span>value<span class="token punctuation">}</span><span class="token operator">!</span><span class="token operator">&lt;</span><span class="token operator">/</span>span<span class="token operator">&gt;</span>
   <span class="token punctuation">)</span>
-<span class="token punctuation">)</span>
+<span class="token punctuation">}</span>
 
-<span class="token keyword">const</span> mapDataToProps <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> age<span class="token punctuation">,</span> country <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  isValid<span class="token punctuation">:</span> age<span class="token punctuation">.</span>value <span class="token operator">&gt;=</span> <span class="token number">18</span><span class="token punctuation">,</span>
-  country<span class="token punctuation">:</span> country<span class="token punctuation">.</span>value
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">withData</span><span class="token punctuation">(</span>mapDataToProps<span class="token punctuation">)</span><span class="token punctuation">(</span>Message<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// Usage</span>
+<span class="token operator">&lt;</span>Form formId<span class="token operator">=</span><span class="token string">&quot;age&quot;</span> render<span class="token operator">=</span><span class="token punctuation">{</span><span class="token punctuation">(</span><span class="token punctuation">{</span> data <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">{</span>
+  <span class="token operator">&lt;</span>form<span class="token operator">&gt;</span>
+   <span class="token operator">...</span>
+   <span class="token operator">&lt;</span>Message data<span class="token operator">=</span><span class="token punctuation">{</span>data<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+  <span class="token operator">&lt;</span><span class="token operator">/</span>form<span class="token operator">&gt;</span>
+<span class="token punctuation">}</span><span class="token punctuation">}</span><span class="token operator">&gt;</span>
 </code></pre>
 
                                 
@@ -679,7 +609,7 @@ Let&apos;s take the previous example and add a validation message.</p>
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"3.5. Validation Error","level":"1.4.5","depth":2,"next":{"title":"3.6. Handling Submit","level":"1.4.6","depth":2,"path":"docs/guides/HandlingSubmit.md","ref":"docs/guides/HandlingSubmit.md","articles":[]},"previous":{"title":"3.4. Form Validation","level":"1.4.4","depth":2,"path":"docs/guides/FormValidation.md","ref":"docs/guides/FormValidation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/guides/ValidationErrors.md","mtime":"2017-07-13T11:13:27.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-07-23T16:20:37.345Z"},"basePath":"../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"3.5. Validation Error","level":"1.4.5","depth":2,"next":{"title":"3.6. Handling Submit","level":"1.4.6","depth":2,"path":"docs/guides/HandlingSubmit.md","ref":"docs/guides/HandlingSubmit.md","articles":[]},"previous":{"title":"3.4. Form Validation","level":"1.4.4","depth":2,"path":"docs/guides/FormValidation.md","ref":"docs/guides/FormValidation.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/guides/ValidationErrors.md","mtime":"2018-02-11T13:56:03.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2018-02-11T14:25:52.161Z"},"basePath":"../..","book":{"language":""}});
         });
     </script>
 </div>

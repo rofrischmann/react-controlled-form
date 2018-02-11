@@ -1,55 +1,44 @@
 /* @flow */
-import React, { Component } from 'react'
+import { Component } from 'react'
 import PropTypes from 'prop-types'
 import { connect } from 'react-redux'
 import { shallowEqual } from 'recompose'
 
-import objectReduce from '../utils/objectReduce'
-import {
-  initForm as initFormAction,
-  updateField as updateFieldAction,
-  updateState as updateStateAction
-} from '../model/actions'
+import objectReduce from 'fast-loops/lib/objectReduce'
+
+import { mapStateToProps, mapDispatchToProps } from '../mapping/form'
 
 import type { Field } from '../../types/Field'
 
 type FormProps = {
+  render: Function,
   formId: string,
   initialFields?: Object,
   initialState?: Object,
-  enableDefault?: boolean,
   validate?: Function,
   onChange?: Function,
-  onSubmit?: Function,
 
   data: Object,
   state: Object,
   initForm: Function,
   updateField: Function,
-  updateState: Function
+  updateState: Function,
 }
 
 class Form extends Component {
   static childContextTypes = {
     formId: PropTypes.string.isRequired,
-    isFormValid: PropTypes.bool.isRequired,
-    submitForm: PropTypes.func.isRequired,
-    resetForm: PropTypes.func.isRequired
   }
 
   constructor(props, context) {
     super(props, context)
 
-    const { initForm, initialFields, initialState } = props
-    initForm(initialFields, initialState)
+    props.initForm(props.initialFields, props.initialState)
   }
 
   getChildContext() {
     return {
       formId: this.props.formId,
-      submitForm: this.onSubmit,
-      resetForm: this.onReset,
-      isFormValid: this.validate()
     }
   }
 
@@ -77,37 +66,12 @@ class Form extends Component {
         state: newProps.state,
         previousState: state,
         updateField,
-        updateState
-      })
-    }
-  }
-
-  onSubmit = event => {
-    const {
-      data,
-      state,
-      updateField,
-      updateState,
-      enableDefault,
-      onSubmit
-    } = this.props
-
-    if (onSubmit) {
-      onSubmit({
-        data,
-        state,
-        updateField,
         updateState,
-        resetForm: this.onReset
       })
-    }
-
-    if (event && event.preventDefault && !enableDefault) {
-      event.preventDefault()
     }
   }
 
-  onReset = () => {
+  reset = () => {
     this.props.initForm(this.initialFields, this.initialState)
   }
 
@@ -127,46 +91,18 @@ class Form extends Component {
   initialized: boolean
 
   render() {
-    const {
-      formId,
-      validate,
-      onSubmit,
-      onChange,
-      data,
-      state,
-      initForm,
+    const { formId, data, state, updateField, updateState, render } = this.props
+
+    return render({
+      reset: this.reset,
+      validate: this.validate,
       updateField,
       updateState,
-      ...otherProps
-    } = this.props
-
-    return <form {...otherProps} onSubmit={onSubmit} />
+      formId,
+      data,
+      state,
+    })
   }
 }
-
-const mapStateToProps = ({ form }: Object, { formId }: Object) => ({
-  data: form[formId] && form[formId].data,
-  state: form[formId] && form[formId].state
-})
-
-const mapDispatchToProps = (dispatch: Function, { formId }: Object) => ({
-  initForm: (initialFields: Object, initialState: Object) =>
-    dispatch(initFormAction({ formId, initialFields, initialState })),
-  updateField: (fieldId: string, fieldData: Field) =>
-    dispatch(
-      updateFieldAction({
-        formId,
-        fieldId,
-        ...fieldData
-      })
-    ),
-  updateState: (newState: Object) =>
-    dispatch(
-      updateStateAction({
-        formId,
-        newState
-      })
-    )
-})
 
 export default connect(mapStateToProps, mapDispatchToProps)(Form)

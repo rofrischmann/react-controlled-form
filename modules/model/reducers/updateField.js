@@ -1,5 +1,5 @@
 /* @flow */
-import composeFieldData from '../../utils/composeFieldData'
+import composeData from '../composeData'
 
 import type { Action } from '../../../types/Action'
 
@@ -13,8 +13,8 @@ export default function updateField(
       isEnabled,
       isRequired,
       isTouched = true,
-      isValid
-    }
+      isValid,
+    },
   }: Action
 ): Object {
   return {
@@ -23,14 +23,14 @@ export default function updateField(
       ...state[formId],
       data: {
         ...state[formId].data,
-        [fieldId]: composeFieldData(state[formId].data[fieldId], {
+        [fieldId]: composeData(state[formId].data[fieldId], {
           isEnabled,
           isRequired,
           isValid,
           isTouched,
-          value
-        })
-      }
-    }
+          value,
+        }),
+      },
+    },
   }
 }

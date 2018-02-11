@@ -2,7 +2,7 @@
 <!DOCTYPE HTML>
 <html lang="en" >
     <head>
-        <title>4.1.7. withState · Controlled Forms for React and Redux</title>
+        <title>4.1.2. Field · Controlled Forms for React and Redux</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge" />
         <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
@@ -62,7 +62,7 @@
 
     
     
-    <link rel="prev" href="withData.html" />
+    <link rel="prev" href="Form.html" />
     
 
     </head>
@@ -312,25 +312,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.8" data-path="../../guides/Composition.html">
-            
-                <a href="../../guides/Composition.html">
-            
-                    
-                    3.8. Composition
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.4.9" data-path="../../guides/ThirdPartyComponent.html">
+        <li class="chapter " data-level="1.4.8" data-path="../../guides/ThirdPartyComponent.html">
             
                 <a href="../../guides/ThirdPartyComponent.html">
             
                     
-                    3.9. Using Third-Party Components
+                    3.8. Using Third-Party Components
             
                 </a>
             
@@ -338,7 +325,7 @@
             
         </li>
     
-        <li class="chapter " data-level="1.4.10" data-path="../../guides/DebuggingForms.html">
+        <li class="chapter " data-level="1.4.9" data-path="../../guides/DebuggingForms.html">
             
                 <a href="../../guides/DebuggingForms.html">
             
@@ -397,77 +384,12 @@
             
         </li>
     
-        <li class="chapter " data-level="1.5.1.2" data-path="asField.html">
+        <li class="chapter active" data-level="1.5.1.2" data-path="Field.html">
             
-                <a href="asField.html">
-            
-                    
-                    4.1.2. asField
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.1.3" data-path="asUpdate.html">
-            
-                <a href="asUpdate.html">
+                <a href="Field.html">
             
                     
-                    4.1.3. asUpdate
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.1.4" data-path="asSubmit.html">
-            
-                <a href="asSubmit.html">
-            
-                    
-                    4.1.4. asSubmit
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.1.5" data-path="asReset.html">
-            
-                <a href="asReset.html">
-            
-                    
-                    4.1.5. asReset
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter " data-level="1.5.1.6" data-path="withData.html">
-            
-                <a href="withData.html">
-            
-                    
-                    4.1.6. withData
-            
-                </a>
-            
-
-            
-        </li>
-    
-        <li class="chapter active" data-level="1.5.1.7" data-path="withState.html">
-            
-                <a href="withState.html">
-            
-                    
-                    4.1.7. withState
+                    4.1.2. Field
             
                 </a>
             
@@ -560,7 +482,7 @@
     <!-- Title -->
     <h1>
         <i class="fa fa-circle-o-notch fa-spin"></i>
-        <a href="../../.." >4.1.7. withState</a>
+        <a href="../../.." >4.1.2. Field</a>
     </h1>
 </div>
 
@@ -575,37 +497,127 @@
     
                                 <section class="normal markdown-section">
                                 
-                                <h1 id="withstatemapstatetoprops"><code>withState([mapStateToProps])</code></h1>
-<p>It&apos;s basically a simplified &amp; scoped convenient wrapper for react-redux&apos;s <code>connect</code>.<br>
-It behaves identical to <a href="withData.html"><code>withData</code></a>, but provides form state rather than form data.</p>
-<h2 id="arguments">Arguments</h2>
-<ol>
-<li><code>mapStateToProps</code> (<em>Function?</em>): A function that maps the form state to the component props. It has the signature <em>(state, ownProps) =&gt; Object</em>. By default it passes the whole form data as the <code>data</code> prop. ownProps refers to the props passed to the enhanced component itself.</li>
-</ol>
-<h2 id="returns">Returns</h2>
-<p>(<em>Function</em>) HoC that is used to apply the state mapping</p>
+                                <h1 id="field">Field</h1>
+<p>Field is the most common component. <br>It is used to render fully integrated form fields that ships all required methods and data.</p>
+<h2 id="props">Props</h2>
+<table>
+<thead>
+<tr>
+<th>Prop</th>
+<th>Type</th>
+<th>Default</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>fieldId</td>
+<td>(<em>string</em>)</td>
+<td></td>
+<td>A (unique) identifier used to store the field data in our Redux store.</td>
+</tr>
+<tr>
+<td>initialData</td>
+<td>(<em>Object?</em>)</td>
+<td></td>
+<td>Default field data that is used to initialize the field. The data might be overwritten by <code>initialFields</code> set by the wrapping <a href="Form.html"><code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>Form</span><span class="token punctuation">&gt;</span></span></code></a> component.</td>
+</tr>
+<tr>
+<td>render</td>
+<td>(<em>Function</em>)</td>
+<td></td>
+<td>A render function that renders the component shape. <br>It&apos;s first parameter is an object containing the following properties.</td>
+</tr>
+</tbody>
+</table>
+<h3 id="render-properties">Render Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>value</td>
+<td>(<em>any</em>)</td>
+<td>The controlled field value.</td>
+</tr>
+<tr>
+<td>isEnabled</td>
+<td>(<em>boolean</em>)</td>
+<td>Indicates if the field is enabled.</td>
+</tr>
+<tr>
+<td>isRequired</td>
+<td>(<em>boolean</em>)</td>
+<td>Indicates if the field is required.</td>
+</tr>
+<tr>
+<td>isValid</td>
+<td>(<em>boolean</em>)</td>
+<td>Indicates if the field is valid.</td>
+</tr>
+<tr>
+<td>isTouched</td>
+<td>(<em>boolean</em>)</td>
+<td>Indicates if the field is touched.<br><em>(Yields true as soon as the very first user input happens, but remains false for initialization)</em>.</td>
+</tr>
+<tr>
+<td>state</td>
+<td>(<em>Object</em>)</td>
+<td>The form-scoped state</td>
+</tr>
+<tr>
+<td>formId</td>
+<td>(<em>string</em>)</td>
+<td>The formId passed to the wrapping <a href="Form.html">Form</a> component.</td>
+</tr>
+<tr>
+<td>fieldId</td>
+<td>(<em>string</em>)</td>
+<td>The fieldId passed to the component.</td>
+</tr>
+<tr>
+<td>isFormValid</td>
+<td>(<em>boolean</em>)</td>
+<td>Indicates whether the whole form is valid or not.</td>
+</tr>
+<tr>
+<td>updateField</td>
+<td>(<em>Function</em>)</td>
+<td>Updates the field data.<br>Accepts an object with <code>isEnabled</code>, <code>isRequired</code>, <code>isTouched</code>, <code>isValid</code> and <code>value</code>. Each value is optional though.</td>
+</tr>
+<tr>
+<td>updateState</td>
+<td>(<em>Function</em>)</td>
+<td>Updates the form-scoped state.<br>Takes an object of new state keys and merges those with the existing state.</td>
+</tr>
+</tbody>
+</table>
 <h2 id="example">Example</h2>
-<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> React <span class="token keyword">from</span> <span class="token string">&apos;react&apos;</span>
-<span class="token keyword">import</span> <span class="token punctuation">{</span> withState <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-controlled-form&apos;</span>
+<pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Field <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-controlled-form&apos;</span>
 
-<span class="token keyword">function</span> <span class="token function">Warning</span><span class="token punctuation">(</span><span class="token punctuation">{</span> accepted_terms <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
-  <span class="token keyword">if</span> <span class="token punctuation">(</span>accepted_terms<span class="token punctuation">)</span> <span class="token punctuation">{</span>
-    <span class="token keyword">return</span> <span class="token keyword">null</span>
-  <span class="token punctuation">}</span>
+<span class="token keyword">function</span> <span class="token function">Input</span><span class="token punctuation">(</span><span class="token punctuation">{</span> value<span class="token punctuation">,</span> updateField <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token punctuation">{</span>
+  <span class="token keyword">const</span> onChange <span class="token operator">=</span> e <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token function">updateField</span><span class="token punctuation">(</span><span class="token punctuation">{</span> value<span class="token punctuation">:</span> e<span class="token punctuation">.</span>target<span class="token punctuation">.</span>value <span class="token punctuation">}</span><span class="token punctuation">)</span>
 
   <span class="token keyword">return</span> <span class="token punctuation">(</span>
-    <span class="token operator">&lt;</span>div<span class="token operator">&gt;</span>
-      <span class="token string">&quot;You must accept our terms of trade in order to proceed.&quot;</span>
-    <span class="token operator">&lt;</span><span class="token operator">/</span>div<span class="token operator">&gt;</span>
+    <span class="token operator">&lt;</span>input value<span class="token operator">=</span><span class="token punctuation">{</span>value<span class="token punctuation">}</span> onChange<span class="token operator">=</span><span class="token punctuation">{</span>onChange<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
   <span class="token punctuation">)</span>
 <span class="token punctuation">}</span>
 
-<span class="token keyword">const</span> mapStateToProps <span class="token operator">=</span> <span class="token punctuation">(</span><span class="token punctuation">{</span> accepted_terms <span class="token punctuation">}</span><span class="token punctuation">)</span> <span class="token operator">=</span><span class="token operator">&gt;</span> <span class="token punctuation">(</span><span class="token punctuation">{</span>
-  accepted_terms
-<span class="token punctuation">}</span><span class="token punctuation">)</span>
-
-<span class="token keyword">export</span> <span class="token keyword">default</span> <span class="token function">withState</span><span class="token punctuation">(</span>mapStateToProps<span class="token punctuation">)</span><span class="token punctuation">(</span>Warning<span class="token punctuation">)</span>
+<span class="token comment" spellcheck="true">// Usage</span>
+<span class="token operator">&lt;</span>Field fieldId<span class="token operator">=</span><span class="token string">&quot;firstname&quot;</span> render<span class="token operator">=</span><span class="token punctuation">{</span>Input<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
+<span class="token operator">&lt;</span>Field fieldId<span class="token operator">=</span><span class="token string">&quot;lastname&quot;</span> render<span class="token operator">=</span><span class="token punctuation">{</span>Input<span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
 </code></pre>
+<h2 id="tips--tricks">Tips &amp; Tricks</h2>
+<ul>
+<li>To provide maximum accessibility, it is recommended to utilize the default DOM attributes such as <code>disabled</code> and <code>required</code>. We may use <code>isEnabled</code> and <code>isRequired</code> to set those attributes respectively.</li>
+<li>Using <code>onInput</code> instead of <code>onChange</code>, <code>onKeyPress</code> or <code>onKeyDown</code> ensures that the event has the most recent value.</li>
+<li>Field validation can easily be done within <code>onChange</code>. We can then set <code>isValid</code> within <code>updateField</code> to update the state. Altering the visual appearance depending on <code>isValid</code> helps to tell the user if the field is actually valid or not. Additional, we could show an error message if it&apos;s invalid.</li>
+</ul>
 
                                 
                                 </section>
@@ -633,7 +645,7 @@ It behaves identical to <a href="withData.html"><code>withData</code></a>, but p
 
             
                 
-                <a href="withData.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 4.1.6. withData">
+                <a href="Form.html" class="navigation navigation-prev navigation-unique" aria-label="Previous page: 4.1.1. Form">
                     <i class="fa fa-angle-left"></i>
                 </a>
                 
@@ -645,7 +657,7 @@ It behaves identical to <a href="withData.html"><code>withData</code></a>, but p
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.1.7. withState","level":"1.5.1.7","depth":3,"next":{"title":"4.2. Utilities","level":"1.5.2","depth":2,"ref":"","articles":[{"title":"4.2.1. mapDataToValues","level":"1.5.2.1","depth":3,"path":"docs/api/utils/mapDataToValues.md","ref":"docs/api/utils/mapDataToValues.md","articles":[]},{"title":"4.2.2. validateWithRequired","level":"1.5.2.2","depth":3,"path":"docs/api/utils/validateWithRequired.md","ref":"docs/api/utils/validateWithRequired.md","articles":[]}]},"previous":{"title":"4.1.6. withData","level":"1.5.1.6","depth":3,"path":"docs/api/core/withData.md","ref":"docs/api/core/withData.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/api/core/withState.md","mtime":"2017-07-13T11:13:27.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2017-07-23T16:20:37.345Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.1.2. Field","level":"1.5.1.2","depth":3,"next":{"title":"4.2. Utilities","level":"1.5.2","depth":2,"ref":"","articles":[{"title":"4.2.1. mapDataToValues","level":"1.5.2.1","depth":3,"path":"docs/api/utils/mapDataToValues.md","ref":"docs/api/utils/mapDataToValues.md","articles":[]},{"title":"4.2.2. validateWithRequired","level":"1.5.2.2","depth":3,"path":"docs/api/utils/validateWithRequired.md","ref":"docs/api/utils/validateWithRequired.md","articles":[]}]},"previous":{"title":"4.1.1. Form","level":"1.5.1.1","depth":3,"path":"docs/api/core/Form.md","ref":"docs/api/core/Form.md","articles":[]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/api/core/Field.md","mtime":"2018-02-11T13:40:12.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2018-02-11T14:25:52.161Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>

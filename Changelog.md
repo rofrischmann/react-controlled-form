@@ -1,8 +1,33 @@
 # Changelog
 
+## 3.0
+
+### 3.0
+
+#### 3.0.0
+This major release removes all old APIs (including HoCs) and reduces the whole API to just two simple components Field and Form.
+
+Check the [Migration Guide](docs/introduction/Migration.md) for more information on how to migrate older versions.
+
+## 2.0
+
+### 2.0
+
+#### 2.0.0
+This new major release was an accidently released major version introducing the new render-props APIs. It did modify the existing Form component a bit, but was still backwards-compatible.<br>
+
 ## 1.0
 
 ### 1.2
+
+### 1.2.5
+* do not pass `initialState` to the underlaying `<form>`-element
+	
+#### 1.2.4
+* pass the enhanced `onSubmit` rather than the pure `onSubmit` to the form
+
+#### 1.2.3
+* do not pass `initialFields` to the underlaying `<form>`-element
 
 #### 1.2.0
 ##### API
