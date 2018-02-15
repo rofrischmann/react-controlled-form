@@ -511,7 +511,7 @@
                                 <section class="normal markdown-section">
                                 
                                 <h1 id="form">Form</h1>
-<p>The Form component is used to declare a new form context. Every form field within its children is automatically assigned to it.</p>
+<p>The Form component is used to declare a new form context.<br>Every form field within its children is automatically assigned to it.</p>
 <h2 id="props">Props</h2>
 <table>
 <thead>
@@ -532,14 +532,20 @@
 <tr>
 <td>initialFields</td>
 <td>(<em>Object?</em>)</td>
-<td></td>
+<td><code>{}</code></td>
 <td>Defines initial field data. Every field value is optional.</td>
 </tr>
 <tr>
-<td>enableDefault</td>
-<td>(<em>boolean?</em>)</td>
-<td>false</td>
-<td>If set, <code>event.preventDefault</code> will <strong>not</strong> be called on form submit.</td>
+<td>initialState</td>
+<td>(<em>Object?</em>)</td>
+<td><code>{}</code></td>
+<td>Defines the initial form state.</td>
+</tr>
+<tr>
+<td>validate</td>
+<td>(<em>Function?</em>)</td>
+<td></td>
+<td>A function to perform additional form validation.<br>It must follow the signature <code>(data, state) =&gt; boolean</code>.</td>
 </tr>
 <tr>
 <td>onChange</td>
@@ -548,16 +554,10 @@
 <td>A function that is triggered on <strong>every</strong> change.<br>It&apos;s first parameter matches the <a href="#callback-shape">callback shape</a>. It additionally also receives <code>previousData</code> and <code>previousState</code> which contain the field data and form state before the change happened.</td>
 </tr>
 <tr>
-<td>onSubmit</td>
-<td>(<em>Function?</em>)</td>
+<td>render</td>
+<td>(<em>Function</em>)</td>
 <td></td>
-<td>A function that is triggered if the form gets submitted.<br>It&apos;s first parameter matches the <a href="#callback-shape">callback shape</a>.</td>
-</tr>
-<tr>
-<td>validate</td>
-<td>(<em>Function?</em>)</td>
-<td></td>
-<td>A function to perform additional form validation.<br>It&apos;s first parameter matches the <a href="#callback-shape">callback shape</a>.</td>
+<td>A render function that renders the component shape.<br>It&apos;s first parameter is an object containing the <a href="#renderingproperties">render properties</a>.</td>
 </tr>
 </tbody>
 </table>
@@ -576,9 +576,57 @@ CallbackShape = {
 
   updateField: Function(fieldId: string, data: FieldData),
   updateState: Function(newState: Object),
-  resetForm: Function
+  validate: Function,
+  reset: Function
 }
-</code></pre><h2 id="example">Example</h2>
+</code></pre><h3 id="render-properties">Render Properties</h3>
+<table>
+<thead>
+<tr>
+<th>Property</th>
+<th>Type</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>formId</td>
+<td>(<em>string</em>)</td>
+<td>The formId passed to the wrapping <a href="Form.html">Form</a> component.</td>
+</tr>
+<tr>
+<td>state</td>
+<td>(<em>Object</em>)</td>
+<td>The form-scoped state.</td>
+</tr>
+<tr>
+<td>data</td>
+<td>(<em>Object</em>)</td>
+<td>An object containing all the form data.</td>
+</tr>
+<tr>
+<td>updateField</td>
+<td>(<em>Function</em>)</td>
+<td>Updates the field data.<br>Accepts an object with <code>isEnabled</code>, <code>isRequired</code>, <code>isTouched</code>, <code>isValid</code> and <code>value</code>. Each value is optional though.</td>
+</tr>
+<tr>
+<td>updateState</td>
+<td>(<em>Function</em>)</td>
+<td>Updates the form-scoped state.<br>Takes an object of new state keys and merges those with the existing state.</td>
+</tr>
+<tr>
+<td>reset</td>
+<td>(<em>Function</em>)</td>
+<td>A special function that resets the form data and state to the initial values <code>initialFields</code> and <code>initialState</code></td>
+</tr>
+<tr>
+<td>validate</td>
+<td>(<em>Function</em>)</td>
+<td>A function that returns the form validity by checking each fields <code>isValid</code> value. It also includes the additional validation that can be passed to the form via the <code>validate</code> property.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="example">Example</h2>
 <pre class="language-"><code class="lang-javascript"><span class="token keyword">import</span> <span class="token punctuation">{</span> Form <span class="token punctuation">}</span> <span class="token keyword">from</span> <span class="token string">&apos;react-controlled-form&apos;</span>
 
 <span class="token keyword">const</span> initialFields <span class="token operator">=</span> <span class="token punctuation">{</span>
@@ -605,6 +653,10 @@ CallbackShape = {
 <span class="token comment" spellcheck="true">// Usage</span>
 <span class="token operator">&lt;</span>Form formId<span class="token operator">=</span><span class="token string">&quot;contact&quot;</span> initialFields<span class="token operator">=</span><span class="token punctuation">{</span>initialFields<span class="token punctuation">}</span> render<span class="token operator">=</span><span class="token punctuation">{</span><span class="token operator">...</span><span class="token punctuation">}</span> <span class="token operator">/</span><span class="token operator">&gt;</span>
 </code></pre>
+<h2 id="tips--tricks">Tips &amp; Tricks</h2>
+<ul>
+<li>In order to leverage all built-in features of HTML forms, it is required to wrap the rendered components with a <code><span class="token tag"><span class="token tag"><span class="token punctuation">&lt;</span>form</span><span class="token punctuation">&gt;</span></span></code> DOM element. If not required, you can also build forms only using fields and they will still be controlled, but you will not be able to simply submit the form.</li>
+</ul>
 
                                 
                                 </section>
@@ -644,7 +696,7 @@ CallbackShape = {
     <script>
         var gitbook = gitbook || [];
         gitbook.push(function() {
-            gitbook.page.hasChanged({"page":{"title":"4.1.1. Form","level":"1.5.1.1","depth":3,"next":{"title":"4.1.2. Field","level":"1.5.1.2","depth":3,"path":"docs/api/core/Field.md","ref":"docs/api/core/Field.md","articles":[]},"previous":{"title":"4.1. Core","level":"1.5.1","depth":2,"ref":"","articles":[{"title":"4.1.1. Form","level":"1.5.1.1","depth":3,"path":"docs/api/core/Form.md","ref":"docs/api/core/Form.md","articles":[]},{"title":"4.1.2. Field","level":"1.5.1.2","depth":3,"path":"docs/api/core/Field.md","ref":"docs/api/core/Field.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/api/core/Form.md","mtime":"2018-02-10T19:28:35.667Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2018-02-11T15:08:15.748Z"},"basePath":"../../..","book":{"language":""}});
+            gitbook.page.hasChanged({"page":{"title":"4.1.1. Form","level":"1.5.1.1","depth":3,"next":{"title":"4.1.2. Field","level":"1.5.1.2","depth":3,"path":"docs/api/core/Field.md","ref":"docs/api/core/Field.md","articles":[]},"previous":{"title":"4.1. Core","level":"1.5.1","depth":2,"ref":"","articles":[{"title":"4.1.1. Form","level":"1.5.1.1","depth":3,"path":"docs/api/core/Form.md","ref":"docs/api/core/Form.md","articles":[]},{"title":"4.1.2. Field","level":"1.5.1.2","depth":3,"path":"docs/api/core/Field.md","ref":"docs/api/core/Field.md","articles":[]}]},"dir":"ltr"},"config":{"plugins":["edit-link","prism","-highlight","github","anker-enable","advanced-emoji"],"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"pluginsConfig":{"prism":{},"github":{"url":"https://github.com/rofrischmann/react-controlled-form/"},"anker-enable":{},"search":{},"lunr":{"maxIndexSize":1000000},"fontsettings":{"theme":"white","family":"sans","size":2},"advanced-emoji":{"embedEmojis":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"edit-link":{"base":"https://github.com/rofrischmann/react-controlled-form/tree/master","label":"Edit This Page"},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"theme":"default","author":"Robin Frischmann <robin@rofrischmann.de>","pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"variables":{},"title":"Controlled Forms for React and Redux","language":"en","gitbook":"3.1.0","description":"Official documentation for react-controlled-form"},"file":{"path":"docs/api/core/Form.md","mtime":"2018-02-15T17:23:20.000Z","type":"markdown"},"gitbook":{"version":"3.1.0","time":"2018-02-15T21:47:13.071Z"},"basePath":"../../..","book":{"language":""}});
         });
     </script>
 </div>
