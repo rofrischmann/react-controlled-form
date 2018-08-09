@@ -39,6 +39,7 @@ class Form extends Component {
     const { initForm, initialFields, initialState } = props
     initForm(initialFields, initialState)
 
+    this.initialized = false
     this.reinitListeners = []
   }
 
@@ -80,12 +81,11 @@ class Form extends Component {
       )
 
       arrayEach(this.reinitListeners, callback => callback())
-
-      return
     }
 
     if (
       onChange &&
+      this.initialized &&
       (!shallowEqual(data, newProps.data) ||
         !shallowEqual(state, newProps.state))
     ) {
@@ -100,6 +100,8 @@ class Form extends Component {
         updateState,
       })
     }
+
+    this.initialized = true
   }
 
   reset = () => {
@@ -124,12 +126,13 @@ class Form extends Component {
   }
 
   props: FormProps
+  initialized: boolean
   reinitListeners: Array<Function>
 
   render() {
     const { formId, data, state, updateField, updateState, render } = this.props
 
-    if (!data) {
+    if (!this.initialized) {
       // quick escape as the initial rerender will already be triggered
       // TODO: it's pretty ugly to require a full rerender, maybe we can fix that
       return null
